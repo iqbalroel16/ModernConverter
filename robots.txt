@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://converter.iqbalroel.com/sitemap.xml
+
+# Disallow admin login for bots
+Disallow: /admin/

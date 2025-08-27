@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
+    <title>Modern Converter App | Konversi File Cepat, Aman, & Gratis</title>
+
+    <meta name="description" content="Modern Converter App by Iqbal Roel: Konversi video, audio, dokumen (Word, Excel, PDF, gambar) secara online. Cepat, aman, gratis, dan didukung AI Gemini Google. Tidak menyimpan file pengguna.">
+    <meta name="keywords" content="converter, konverter, file converter, video to audio, audio to video, word to pdf, pdf to word, excel to pdf, excel to word, ppt to pdf, image to pdf, pdf to image, mp3, mp4, docx, xlsx, pptx, jpg, png, gratis, online, AI, Gemini, Google, download, ubah format, universal converter, Iqbal Roel, konversi file, konversi dokumen, konversi video, konversi audio, konversi gambar, aman, tanpa simpan file, privasi, free tools, utility, cloud converter, konversi online">
+    <meta name="author" content="Iqbal Roel">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE" />
+
+    <meta property="og:title" content="Modern Converter App - Universal File Converter by Iqbal Roel">
+    <meta property="og:description" content="Konverter serba guna: video, audio, dokumen, gambar, didukung AI Gemini Google. Gratis, mudah, aman, dan cepat. Tidak menyimpan file pengguna.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://converter.iqbalroel.com/">
+    <meta property="og:image" content="https://converter.iqbalroel.com/public/img/favicon.png">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="Modern Converter App">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Modern Converter App - Konverter Serba Guna Gratis">
+    <meta name="twitter:description" content="Konverter file video, audio, dokumen, gambar, gratis dan aman. Didukung AI Gemini Google. Author: Iqbal Roel.">
+    <meta name="twitter:image" content="https://converter.iqbalroel.com/public/img/favicon.png">
+
+    <link rel="canonical" href="https://converter.iqbalroel.com/" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ios-blue-glass-light': 'rgba(0, 122, 255, 0.2)', /* Lighter for background elements */
+                        'ios-blue-glass-medium': 'rgba(0, 122, 255, 0.4)', /* Medium for cards/sections */
+                        'ios-blue-glass-dark': 'rgba(0, 122, 255, 0.6)',  /* Darker for interactive elements */
+                        'primary-blue': '#007AFF', // Standard iOS blue
+                        'dark-blue': '#0056B3', // Darker shade for hover/active
+                    },
+                    boxShadow: {
+                        'ios-glass': '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)',
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Glassmorphism Effect Base */
+        .glass-effect {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.5rem; /* Rounded-3xl default */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar specific glass effect */
+        .navbar-glass {
+            background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque */
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Active Navigation Link Style */
+        .nav-link-custom.active {
+            background-color: rgba(0, 122, 255, 0.7); /* A solid, slightly darker iOS blue for active */
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-link-custom:not(.active):hover {
+            background-color: rgba(0, 122, 255, 0.2); /* Light glass effect on hover */
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        /* Form Input Focus State */
+        .form-input-custom:focus {
+            outline: none;
+            border-color: #007AFF; /* Primary iOS blue */
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.4); /* iOS blue ring */
+        }
+
+        /* Quality Select Customization */
+        .quality-select-custom {
+            background-color: rgba(0, 122, 255, 0.1);
+            color: #1a202c; /* Dark text for contrast */
+            border-color: rgba(0, 122, 255, 0.3);
+        }
+
+        /* Specific Mobile Responsiveness Overrides (fine-tuning for very small screens) */
+        @media (max-width: 640px) {
+            .container {
+                max-width: 100vw !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            .glass-effect {
+                border-radius: 1rem !important; /* Slightly less rounded on small screens */
+                padding: 0.75rem !important;
+            }
+            h2, .text-4xl, .text-3xl, .text-2xl, .text-xl {
+                font-size: 1.5rem !important; /* Adjust header sizes */
+            }
+            .tab-pane > div, .tab-pane label, .tab-pane input, .tab-pane select, .tab-pane button {
+                font-size: 14px !important;
+                padding: 0.6rem 0.8rem !important;
+            }
+            .tab-pane input, .tab-pane select {
+                min-width: 0;
+                width: 100% !important;
+            }
+            .tab-pane label {
+                margin-bottom: 0.25rem !important;
+            }
+            .tab-pane {
+                padding: 0.5rem !important;
+            }
+            .mb-6, .mb-5, .mb-4, .mb-3, .mb-2, .mb-1 {
+                margin-bottom: 0.75rem !important;
+            }
+            .shadow-2xl {
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                padding-left: 0.25rem !important;
+                padding-right: 0.25rem !important;
+            }
+            .glass-effect {
+                border-radius: 0.75rem !important;
+                padding: 0.5rem !important;
+            }
+            h1, h2, .text-4xl, .text-3xl, .text-2xl, .text-xl {
+                font-size: 1.25rem !important;
+                line-height: 1.3 !important;
+            }
+            .nav-link-custom {
+                padding: 0.35rem 0.6rem !important;
+                font-size: 0.8rem !important;
+            }
+            .tab-pane > div, .tab-pane label, .tab-pane input, .tab-pane select, .tab-pane button {
+                font-size: 12px !important;
+                padding: 0.3rem 0.4rem !important;
+            }
+            img, .w-20, .h-20 {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            button, a {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.6rem !important;
+            }
+            input, select {
+                font-size: 0.85rem !important;
+            }
+            .text-sm {
+                font-size: 0.7rem !important;
+            }
+            .text-xs {
+                font-size: 0.65rem !important;
+            }
+            .navbar-brand-text {
+                font-size: 1rem !important; /* Adjust navbar brand text size */
+            }
+        }
+
+        /* Responsive Navbar specific styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 25px;
+            height: 20px;
+            z-index: 60;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-bottom-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                z-index: 40;
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .navbar-links a {
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            .navbar-links a:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx"
+        crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-1 sm:p-4 text-gray-900" style="background: radial-gradient(circle at center, #6ec1e4 0%, #2575fc 60%, #1e3c72 100%);">
+
+    <nav class="fixed top-0 left-0 w-full navbar-glass shadow-lg z-50 flex justify-between items-center px-4 py-3 sm:px-6 md:px-8">
+        <a href="/" class="flex items-center font-bold text-primary-blue text-lg sm:text-xl navbar-brand-text">
+            <img src="/public/img/result-01868bbe.png" alt="Modern Converter Logo" class="w-8 h-8 mr-2" style="background:transparent;">
+            <span class="font-extrabold text-white uppercase tracking-wide drop-shadow-xl" style="font-family: 'Inter', 'Montserrat', 'Segoe UI', sans-serif; letter-spacing: 0.08em;">Modern Converter</span>
+        </a>
+        <div class="hamburger md:hidden" onclick="toggleNavbar()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="navbar-links hidden md:flex md:items-center space-x-4">
+            <a href="/" class="mx-2 text-white hover:text-primary-blue font-medium transition duration-200">Home</a>
+            <a href="#how-to-use" class="mx-2 text-white hover:text-primary-blue font-medium transition duration-200">Cara Pakai</a>
+            <a href="/about" class="mx-2 text-white hover:text-primary-blue font-medium transition duration-200">Tentang</a>
+            <a href="/contact" class="mx-2 text-white hover:text-primary-blue font-medium transition duration-200">Kontak</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto max-w-3xl w-full px-4 sm:px-8 md:px-12 pt-24 pb-12 flex flex-col items-center justify-center">
+        <div class="flex justify-center mb-6 ad-container">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+                aria-label="Iklan Converter Gratis"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+    <div class="glass-effect p-8 sm:p-12 md:p-16 rounded-3xl shadow-2xl border border-white/20 backdrop-blur-xl bg-white/10 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center w-full">
+            <h1 class="mb-8 text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-xl">
+                    <img src="/public/img/result-01868bbe.png" alt="Modern Converter Logo" class="inline w-10 h-10 mr-3 align-middle" style="background:transparent;"> Modern Converter
+            </h1>
+            <!-- ...existing code... -->
+
+            <ul class="flex justify-center mb-10 space-x-2 p-2 bg-white/10 rounded-full shadow-inner" id="modeTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link-custom px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-lg font-medium rounded-full {% if mode == 'link' %}active{% else %}text-gray-200 hover:text-white{% endif %}"
+                            id="link-tab" onclick="switchTab('link')">
+                        Convert Link
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link-custom px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-lg font-medium rounded-full {% if mode == 'file' %}active{% else %}text-gray-200 hover:text-white{% endif %}"
+                            id="file-tab" onclick="switchTab('file')">
+                        Convert Vid/Aud
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link-custom px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-lg font-medium rounded-full {% if mode == 'document' %}active{% else %}text-gray-200 hover:text-white{% endif %}"
+                            id="doc-tab" onclick="switchTab('document')">
+                        Convert Document
+                    </button>
+                </li>
+            </ul>
+
+            <form method="POST" enctype="multipart/form-data" id="mainForm" onsubmit="showLoading()">
+                <script>
+                // Prevent form submission for specific YouTube links (frontend)
+                document.addEventListener('DOMContentLoaded', function() {
+                    const mainForm = document.getElementById('mainForm');
+                    if (mainForm) {
+                        mainForm.addEventListener('submit', function(e) {
+                            const mode = document.getElementById('modeInput').value;
+                            if (mode === 'link') {
+                                const linkInput = document.getElementById('link');
+                                if (linkInput && (linkInput.value.includes('youtube.com') || linkInput.value.includes('youtu.be'))) {
+                                    e.preventDefault();
+                                    alert('Maaf, untuk link YouTube tidak kami sediakan sesuai kebijakan Google demi keamanan aplikasi. Silakan gunakan link lain.');
+                                    return false;
+                                }
+                            }
+                        });
+                    }
+                });
+                </script>
+
+                <input type="hidden" name="mode" id="modeInput" value="{{ mode or 'link' }}">
+                <div class="tab-content">
+                    <div class="tab-pane {% if mode == 'link' %}block{% else %}hidden{% endif %}" id="link-pane">
+                        <div class="mb-6">
+                            <label for="link" class="block text-white text-lg font-extrabold mb-2">Paste Video Link</label>
+                            <input type="url" class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 placeholder-gray-400 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg font-medium transition duration-200" id="link" name="link" placeholder="Paste link..." {% if mode != 'link' %}disabled{% endif %}>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-white text-lg font-extrabold mb-2">Choose Site</label>
+                                <select class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 shadow-lg text-lg font-medium transition duration-200" name="site" id="siteSelect" {% if mode != 'link' %}disabled{% endif %}>
+                                    <option value="tiktok">TikTok</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="pinterest">Pinterest</option>
+                                    <option value="telegram">Telegram</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-white text-lg font-extrabold mb-2">Format Output</label>
+                                <select class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 shadow-lg text-lg font-medium transition duration-200" name="output_format" id="outputFormatSelect" {% if mode != 'link' %}disabled{% endif %}>
+                                    <option value="mp4">MP4 (Video)</option>
+                                    <option value="mp3">MP3 (Audio)</option>
+                                    <option value="webm">WEBM (Video)</option>
+                                    <option value="m4a">M4A (Audio)</option>
+                                    <option value="3gp">3GP (Video)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-white text-lg font-extrabold mb-2">Video Quality</label>
+                            <select class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 shadow-lg text-lg font-medium transition duration-200" name="quality" id="qualitySelect" {% if mode != 'link' %}disabled{% endif %}>
+                                <option value="1080">1080p</option>
+                                <option value="720">720p</option>
+                                <option value="480">480p</option>
+                                <option value="360">360p</option>
+                                <option value="240">240p</option>
+                            </select>
+                        </div>
+    </div>
+    <!-- Card info/keunggulan sudah dipindahkan ke bawah, tidak tampil di dalam fitur utama -->
+
+
+                    <div class="tab-pane {% if mode == 'file' %}block{% else %}hidden{% endif %}" id="file-pane">
+                        <div class="mb-6">
+                            <label for="file" class="block text-white text-base font-bold mb-3">Upload File</label>
+                            <input class="w-full p-4 border-none rounded-2xl bg-white/60 text-gray-900 placeholder-gray-400 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg font-medium transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-blue file:text-white hover:file:bg-dark-blue" type="file" id="file" name="file" {% if mode != 'file' %}disabled{% endif %}>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-white text-base font-bold mb-3">Format Asal (From Format)</label>
+                                <select class="w-full p-4 rounded-2xl bg-white/60 text-gray-900 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg font-medium transition duration-200" name="input_format" {% if mode != 'file' %}disabled{% endif %}>
+                                    <option value="mp3">MP3</option>
+                                    <option value="mp4">MP4</option>
+                                    <option value="wav">WAV</option>
+                                    <option value="aac">AAC</option>
+                                    <option value="ogg">OGG</option>
+                                    <option value="flac">FLAC</option>
+                                    <option value="mov">MOV</option>
+                                    <option value="avi">AVI</option>
+                                    <option value="mkv">MKV</option>
+                                    <option value="webm">WEBM</option>
+                                    <option value="3gp">3GP</option>
+                                    <option value="m4a">M4A</option>
+                                    <option value="wma">WMA</option>
+                                    <option value="opus">OPUS</option>
+                                </select>
+                                <span class="block text-white/80 text-xs mt-2">Pilih format file asli yang ingin Anda ubah.</span>
+                            </div>
+                            <div>
+                                <label class="block text-white text-base font-bold mb-3">Format Tujuan (To Format)</label>
+                                <select class="w-full p-4 rounded-2xl bg-white/60 text-gray-900 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg font-medium transition duration-200" name="output_format" {% if mode != 'file' %}disabled{% endif %}>
+                                    <option value="mp3">MP3</option>
+                                    <option value="mp4">MP4</option>
+                                    <option value="wav">WAV</option>
+                                    <option value="aac">AAC</option>
+                                    <option value="ogg">OGG</option>
+                                    <option value="flac">FLAC</option>
+                                    <option value="mov">MOV</option>
+                                    <option value="avi">AVI</option>
+                                    <option value="mkv">MKV</option>
+                                    <option value="webm">WEBM</option>
+                                    <option value="3gp">3GP</option>
+                                    <option value="m4a">M4A</option>
+                                    <option value="wma">WMA</option>
+                                    <option value="opus">OPUS</option>
+                                </select>
+                                <span class="block text-white/80 text-xs mt-2">Pilih format hasil yang diinginkan setelah konversi.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane {% if mode == 'document' %}block{% else %}hidden{% endif %}" id="doc-pane">
+                        <div class="mb-6">
+                            <label for="docfile" class="block text-white text-lg font-extrabold mb-2">Upload Document</label>
+                            <input class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 placeholder-gray-400 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg font-medium transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-blue file:text-white hover:file:bg-dark-blue" type="file" id="docfile" name="file" {% if mode != 'document' %}disabled{% endif %}>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-white text-lg font-extrabold mb-2">From Format (From Format)</label>
+                                <select class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 shadow-lg text-lg font-medium transition duration-200" name="input_format" {% if mode != 'document' %}disabled{% endif %}>
+                                    <option value="heic">HEIC</option>
+                                    <option value="heif">HEIF</option>
+                                    <option value="webp">WEBP</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="docx">DOCX</option>
+                                    <option value="doc">DOC</option>
+                                    <option value="xlsx">XLSX</option>
+                                    <option value="xls">XLS</option>
+                                    <option value="pptx">PPTX</option>
+                                    <option value="ppt">PPT</option>
+                                    <option value="txt">TXT</option>
+                                    <option value="rtf">RTF</option>
+                                    <option value="odt">ODT</option>
+                                    <option value="jpg">JPG</option>
+                                    <option value="jpeg">JPEG</option>
+                                    <option value="png">PNG</option>
+                                    <option value="html">HTML</option>
+                                    <option value="epub">EPUB</option>
+                                </select>
+                                <span class="block text-white/80 text-xs mt-2">Pilih format file asli yang ingin Anda ubah.</span>
+                            </div>
+                            <div>
+                                <label class="block text-white text-lg font-extrabold mb-2">To Format (To Format)</label>
+                                <select class="w-full p-5 border-none rounded-xl bg-blue-100/60 text-gray-900 shadow-lg text-lg font-medium transition duration-200" name="output_format" {% if mode != 'document' %}disabled{% endif %}>
+                                    <option value="heic">HEIC</option>
+                                    <option value="heif">HEIF</option>
+                                    <option value="webp">WEBP</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="docx">DOCX</option>
+                                    <option value="doc">DOC</option>
+                                    <option value="xlsx">XLSX</option>
+                                    <option value="xls">XLS</option>
+                                    <option value="pptx">PPTX</option>
+                                    <option value="ppt">PPT</option>
+                                    <option value="txt">TXT</option>
+                                    <option value="rtf">RTF</option>
+                                    <option value="odt">ODT</option>
+                                    <option value="jpg">JPG</option>
+                                    <option value="jpeg">JPEG</option>
+                                    <option value="png">PNG</option>
+                                    <option value="html">HTML</option>
+                                    <option value="epub">EPUB</option>
+                                </select>
+                                <span class="block text-white/80 text-xs mt-2">Pilih format hasil yang diinginkan setelah konversi.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-white text-sm font-semibold mb-2">Fitur AI Gemini (opsional)</label>
+                    <select class="form-input-custom w-full p-3 border border-gray-300 rounded-lg bg-white/70 text-gray-900 focus:outline-none focus:ring-primary-blue focus:border-primary-blue"
+                            name="gemini_feature">
+                        <option value="">-- Tidak Ada --</option>
+                        <option value="summary">Ringkasan Dokumen</option>
+                        <option value="description">Deskripsi Otomatis</option>
+                        <option value="remaster">Remaster Gambar</option>
+                        <option value="translate">Translate Dokumen</option>
+                        <option value="remove_bg">Hapus Background Gambar</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full gradient-convert-btn flex items-center justify-center">
+                    <span class="material-icons align-middle mr-2 text-white">bolt</span> Lets Convers!
+                </button>
+                <style>
+                .gradient-convert-btn {
+                    background: linear-gradient(90deg, #2196f3 0%, #43e97b 50%, #fd6ec7 100%);
+                    color: #fff;
+                    font-weight: bold;
+                    border-radius: 1rem;
+                    box-shadow: 0 4px 20px rgba(33,150,243,0.15), 0 1.5px 6px rgba(253,110,199,0.12);
+                    border: none;
+                    padding: 1rem 0;
+                    font-size: 1.2rem;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                }
+                .gradient-convert-btn:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 8px 32px rgba(33,150,243,0.18), 0 2px 12px rgba(253,110,199,0.18);
+                }
+                </style>
+                <!-- Popup Fitur FileTab dihapus, fitur konversi video/audio diaktifkan kembali -->
+                <div id="loadingAnim" class="hidden w-full flex flex-col items-center justify-center mt-6">
+                    <svg class="animate-spin h-10 w-10 text-primary-blue mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                    </svg>
+                    <span class="text-white font-semibold">Processing... Harap tunggu</span>
+                </div>
+            </form>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded-lg mt-6" role="alert">
+                {{ messages[0] }}
+            </div>
+            {% endif %}
+            {% endwith %}
+            {% if download_url %}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mt-6 flex justify-center">
+                <button type="button" onclick="showDonasiPopup('{{ download_url }}')" class="inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Download Hasil
+                </button>
+            </div>
+            <!-- Popup Donasi -->
+            <div id="donasiPopup" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center relative">
+                    <button type="button" onclick="closeDonasiPopup()" class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold focus:outline-none" aria-label="Tutup">
+                        &times;
+                    </button>
+                    <h3 class="text-2xl font-bold mb-4 text-primary-blue">Dukung Pengembangan Converter!</h3>
+                    <p class="mb-6 text-gray-700">Sebelum download, Anda bisa berdonasi untuk mendukung aplikasi ini tetap gratis dan berkembang.<br>Pilih salah satu:</p>
+                    <div class="flex flex-col gap-4 mb-6">
+                        <a href="/donasi" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-bold text-lg shadow hover:scale-105 transition">Donasi Sekarang</a>
+                        <button type="button" id="skipDonasiBtn" class="w-full py-3 rounded-xl bg-gray-300 text-gray-800 font-bold text-lg shadow hover:bg-gray-400 transition">Lewati & Download</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            function showDonasiPopup(downloadUrl) {
+                document.getElementById('donasiPopup').classList.remove('hidden');
+                document.getElementById('skipDonasiBtn').onclick = function() {
+                    window.location.href = downloadUrl;
+                };
+            }
+            function closeDonasiPopup() {
+                document.getElementById('donasiPopup').classList.add('hidden');
+            }
+            // Optional: close popup on outside click
+            document.addEventListener('click', function(e) {
+                var popup = document.getElementById('donasiPopup');
+                if (!popup.classList.contains('hidden') && !popup.contains(e.target) && e.target.innerText !== 'Download Hasil') {
+                    popup.classList.add('hidden');
+                }
+            });
+            </script>
+            {% endif %}
+            {% if result %}
+            <div class="glass-effect text-white p-4 py-3 rounded-lg mt-6">
+                <strong class="font-bold">Hasil Gemini:</strong><br>{{ result }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Remaster Gambar Card -->
+    <div class="glass-effect p-8 sm:p-12 md:p-16 mt-12 rounded-3xl shadow-2xl border border-white/20 backdrop-blur-xl bg-white/10 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center w-full">
+            <div class="mb-6 w-full text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2 tracking-tight drop-shadow-xl">Remaster AI</h2>
+                <p class="text-lg text-white/80">Ayo gunakan AI remaster ini untuk memperbagus gambar anda</p>
+            </div>
+            <form method="POST" action="/remaster" enctype="multipart/form-data" class="space-y-8 w-full">
+                <div>
+                    <label for="remasterImage" class="block text-lg font-bold mb-2 text-white">Upload Gambar Buram</label>
+                    <input class="w-full p-4 border-2 border-blue-300 rounded-xl bg-white text-gray-900 placeholder-gray-400 shadow focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg font-medium transition duration-200" type="file" id="remasterImage" name="image" accept="image/*" required>
+                </div>
+                <div>
+                    <label for="geminiMode" class="block text-lg font-bold mb-2 text-white">Fitur Remaster Gambar (Gemini AI)</label>
+                    <select id="geminiMode" name="gemini_mode" class="w-full p-4 rounded-xl bg-white text-gray-900 text-lg font-medium mb-2 border-2 border-blue-300">
+                        <option value="aktif">Aktifkan Remaster Gambar (AI Gemini)</option>
+                        <option value="nonaktif">Nonaktifkan Remaster (Original)</option>
+                    </select>
+                    <div class="text-white text-base mt-2 mb-4">Fitur ini menganalisa pixel, chromatic, pencerahan, detail, dan bit gambar yang rusak/pecah lalu memperbaiki otomatis dengan kualitas hingga 16MP.</div>
+                </div>
+                <button type="submit" class="w-full flex items-center justify-center font-bold text-xl py-4 rounded-xl shadow-lg transition duration-200" style="background: linear-gradient(90deg, #0093E9 0%, #80D0C7 50%, #FF6A88 100%); color: #fff;">
+                    <span class="material-icons align-middle mr-2 text-white text-2xl">auto_fix_high</span> Proses Remaster
+                </button>
+                <div>
+                    <label for="outputFormat" class="block text-lg font-bold mb-2 text-white">Output Format</label>
+                    <select id="outputFormat" name="output_format" class="w-full p-4 rounded-xl bg-white text-gray-900 text-lg font-medium mb-2 border-2 border-blue-300">
+                        <option value="jpg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="docx">DOCX</option>
+                        <option value="pdf">PDF</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="efekGambar" class="block text-lg font-bold mb-2 text-white">Efek Gambar</label>
+                    <select id="efekGambar" name="efek_gambar" class="w-full p-4 rounded-xl bg-white text-gray-900 text-lg font-medium border-2 border-blue-300">
+                        <option value="tajam">Tajamkan (Remaster 64MP)</option>
+                        <option value="normal">Normal (16MP)</option>
+                        <option value="chromatic">Perbaiki Chromatic</option>
+                        <option value="detail">Perjelas Detail</option>
+                    </select>
+                </div>
+            </form>
+            {% if remaster_result %}
+            <div class="glass-effect text-white p-4 py-3 rounded-lg mt-6">
+                <strong class="font-bold">Hasil Remaster:</strong><br>{{ remaster_result }}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="flex justify-center mt-6 ad-container">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+                data-ad-slot="9876543210"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+                aria-label="Iklan Converter Aman"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer class="text-center mt-10 text-gray-200">
+        <!-- Card Info/Keunggulan di bawah form utama -->
+        <div class="bg-white/90 rounded-2xl shadow-xl p-6 mb-10 w-full">
+            <div class="mb-4 flex items-center">
+                <span class="material-icons text-blue-600 text-3xl mr-2">auto_fix_high</span>
+                <span class="text-xl font-bold text-blue-700">Fitur Remaster Gambar</span>
+            </div>
+            <div class="text-gray-800 mb-2">Ubah gambar pecah/buram menjadi lebih bersih dan tajam secara otomatis, seperti fitur penyempurnaan foto di Samsung. Gambar hasil convert akan memiliki kualitas hingga 16 Mega Pixel!</div>
+            <div class="text-gray-600 text-sm">Upload gambar pada mode <b>Convert Document</b> dan pilih format output JPG/PNG/DOCX/PDF. Fitur ini akan otomatis memperbaiki gambar sebelum dikonversi.</div>
+        </div>
+        <div class="bg-blue-900/80 rounded-2xl shadow-xl p-8 w-full text-white mb-10 flex flex-col md:flex-row gap-8">
+            <div class="flex-1">
+                <div class="flex items-center mb-2"><span class="material-icons text-blue-200 mr-2">compare_arrows</span><span class="text-lg font-bold">Konversi File Mudah &amp; Cepat</span></div>
+                <div class="mb-6">Modern Converter App adalah solusi all-in-one untuk mengubah berbagai format file seperti video, audio, dokumen, dan gambar secara online. Anda tidak perlu instal aplikasi tambahan, cukup upload file atau masukkan link, pilih format tujuan, dan proses konversi berjalan otomatis.</div>
+                <div class="flex items-center mb-2"><span class="material-icons text-yellow-400 mr-2">star</span><span class="text-lg font-bold">Kualitas Tinggi &amp; AI Gemini</span></div>
+                <div>Aplikasi ini mendukung konversi ke format populer seperti MP4, MP3, PDF, DOCX, PNG, dan lainnya. Dengan teknologi AI Gemini Google, Anda bisa mendapatkan fitur tambahan seperti ringkasan dokumen, deskripsi otomatis, dan remaster gambar agar hasil lebih tajam dan jernih.</div>
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center mb-2"><span class="material-icons text-green-300 mr-2">looks_two</span><span class="text-lg font-bold">Cara Menggunakan</span></div>
+                <ol class="list-decimal ml-6 mb-6">
+                    <li>Pilih jenis konversi: video/audio, dokumen, atau remaster gambar.</li>
+                    <li>Upload file atau masukkan link.</li>
+                    <li>Pilih format output dan fitur tambahan jika diinginkan.</li>
+                    <li>Klik Convert dan tunggu proses selesai.</li>
+                    <li>Download hasil konversi dengan kualitas terbaik.</li>
+                </ol>
+                <div class="flex items-center mb-2"><span class="material-icons text-red-400 mr-2">security</span><span class="text-lg font-bold">Keamanan &amp; Privasi</span></div>
+                <div>Modern Converter tidak menyimpan file pengguna di server. Semua proses dilakukan secara real-time dan privasi Anda tetap terjaga. Platform ini gratis, mudah digunakan, dan terus dikembangkan untuk memenuhi kebutuhan konversi file Anda.</div>
+            </div>
+        </div>
+            <p class="text-sm mb-4">Modern Converter App menyediakan solusi konversi file yang cepat, aman, dan mudah digunakan. Kami berkomitmen untuk menjaga privasi data Anda dengan tidak menyimpan file apa pun di server kami.</p>
+            <div class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-medium">
+                <a href="/panduanpengguna" class="text-blue-300 hover:text-white transition duration-200">Panduan Penggunaan</a>
+                <span class="text-gray-400">|</span>
+               <a href="/syarat" class="text-blue-300 hover:text-white transition duration-200">Syaratt & Ketentuan</a>
+                <span class="text-gray-400">|</span>
+                <a href="/privacy" class="text-blue-300 hover:text-white transition duration-200">Kebijakan Privasi</a>
+                <span class="text-gray-400">|</span>
+        <a href="/faq" class="text-blue-300 hover:text-white transition duration-200">FAQ</a></p>
+               <a href="/about" class="text-blue-300 hover:text-white transition duration-200">Tentang Kami</a></p>
+                            <span class="text-gray-400">|</span>
+               <a href="/contact" class="text-blue-300 hover:text-white transition duration-200">Kontak</a></p>
+            <div class="mt-6 text-xs text-gray-400">
+                &copy; <span id="currentYear"></span> Modern Converter App. All rights reserved. | Versi 1.0.0 | Didukung oleh R-Development
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Tab Switching Logic (same as before, relies on backend to re-render with 'mode' variable)
+        function switchTab(mode) {
+            document.getElementById('modeInput').value = mode;
+            document.getElementById('mainForm').submit();
+        }
+
+        // Show Loading Animation
+        function showLoading() {
+            document.getElementById('loadingAnim').classList.remove('hidden');
+            document.getElementById('mainForm').classList.add('pointer-events-none', 'opacity-60');
+        }
+
+        // Navbar Toggle for Mobile
+        function toggleNavbar() {
+            const navbarLinks = document.querySelector('.navbar-links');
+            navbarLinks.classList.toggle('active');
+        }
+
+        // Intro Slider Logic
+        let currentSlideFP = 0;
+        const slidesFP = document.querySelectorAll('.intro-slide-fp');
+        const introFullpage = document.getElementById('introFullpage');
+
+        function showSlideFP(index) {
+            slidesFP.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function nextIntroSlideFP() {
+            if (currentSlideFP < slidesFP.length - 1) {
+                currentSlideFP++;
+                showSlideFP(currentSlideFP);
+            } else {
+                hideIntroFullpage();
+            }
+        }
+
+        function hideIntroFullpage() {
+            introFullpage.classList.add('opacity-0');
+            setTimeout(() => {
+                introFullpage.style.display = 'none';
+                localStorage.setItem('introSeen', 'true'); // Mark intro as seen
+            }, 700); // Duration of the transition
+        }
+
+        // Show intro slider only if not seen before
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('currentYear').textContent = new Date().getFullYear(); // Set current year in footer
+
+            if (!localStorage.getItem('introSeen')) {
+                introFullpage.style.display = 'flex';
+                setTimeout(() => {
+                    introFullpage.classList.add('opacity-100');
+                }, 10); // Small delay to trigger transition
+                showSlideFP(currentSlideFP);
+            } else {
+                introFullpage.style.display = 'none'; // Ensure it's hidden if seen
+            }
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</body>
+</html>

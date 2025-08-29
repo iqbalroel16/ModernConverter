@@ -5,6 +5,10 @@ from PIL import Image
 import tempfile
 
 def default(request: Request):
+    # Jika GET, tampilkan pesan API friendly
+    if request.method == "GET":
+        return {"message": "Modern Converter API 🚀 By iqbalroel16", "status": "ok"}
+
     mode = request.form.get('mode')
     file = request.files.get('file')
     input_format = request.form.get('input_format')

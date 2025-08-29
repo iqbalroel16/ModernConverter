@@ -1,0 +1,5 @@
+Flask
+yt-dlp
+ffmpeg-python
+requests
+python-dotenv

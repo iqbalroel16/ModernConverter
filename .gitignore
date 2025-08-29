@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+usage.log
+*.sqlite3
+instance/
+.env.*
+.DS_Store
+.vscode/
+uploads/
+public/img/result-*.png
+public/img/img/result-*.png
+*.zip

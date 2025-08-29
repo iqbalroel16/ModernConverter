@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Converter App
 
 A modern Python Flask web app for converting links (YouTube, etc) to MP4/MP3 and file-to-file conversion. Features a modern UI (Bootstrap 5) and uses Gemini API (Google AI) for extra features.
@@ -16,3 +17,6 @@ A modern Python Flask web app for converting links (YouTube, etc) to MP4/MP3 and
 ## Notes
 - Requires Python 3.8+
 - For Gemini API, set your API key in the environment variable `GEMINI_API_KEY`
+=======
+# modernconverterapp
+>>>>>>> 7fee4d0f8454358781d65915db2c3fc2375bf04a

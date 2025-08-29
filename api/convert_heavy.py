@@ -1,7 +1,7 @@
 import requests
 from flask import Request, jsonify
 
-def handler(request: Request):
+def default(request: Request):
     mode = request.form.get('mode')
     file = request.files.get('file')
     input_format = request.form.get('input_format')

@@ -1,5 +1,11 @@
+yt-dlp
+ffmpeg-python
+requests
+python-dotenv
+Pillow
 Flask
 yt-dlp
 ffmpeg-python
 requests
 python-dotenv
+Pillow
